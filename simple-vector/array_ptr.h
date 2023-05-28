@@ -20,8 +20,7 @@ public:
     ArrayPtr(const ArrayPtr&) = delete;
 
     ArrayPtr(ArrayPtr&& other) noexcept {
-        delete[] raw_ptr_;
-        raw_ptr_ = exchange(other.raw_ptr_, nullptr);
+        raw_ptr_ = std::exchange(other.raw_ptr_, nullptr);
     }
 
     ~ArrayPtr() {
